@@ -259,8 +259,6 @@ with warnings.catch_warnings():
                 continue
             path_features, path_details = [], []
             
-            dataset = rasterio.open(os.getenv("VRT_PATH"))
-
             witness_edges = witness_edges[(witness_edges["distance_m"] > 50) & (witness_edges["distance_m"] < 50e3)]
 
             with rasterio.open(os.getenv("VRT_PATH")) as dataset:
@@ -291,8 +289,6 @@ with warnings.catch_warnings():
                         continue
 
 
-            dataset.close()
-            
             if len(path_details) < 1 or len(path_features) < 1:
                 # didn't find any valid edges
                 continue
