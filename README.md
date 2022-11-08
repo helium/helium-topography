@@ -60,3 +60,77 @@ You should now be able to run the scripts and apps mentioned above, e.g.
 `streamlit run app_relational.py` (launches the webapp on port 8501 by default)
 
 `python batch_processing.py`
+
+## Starting API and batch-processing services independently with Docker
+
+### API
+
+Build image with:
+
+`make docker-build-api`
+
+Then start it with:
+
+`make docker-start-api`
+
+#### Updating API
+
+Navigate to your copy of the `helium-topography` repository.
+
+`cd /path/to/helium-topography`
+
+Stop the container and remove it.
+
+`make docker-clean-api`
+
+Update the repository.
+
+`git pull`
+
+Build image.
+
+`make docker-build-api`
+
+Start the updated Docker container.
+
+`make docker-start-api`
+
+See logs.
+
+`docker logs api`
+
+### batch-processing
+
+Build image with:
+
+`make docker-build-processing`
+
+Then start it with:
+
+`make docker-start-processing`
+
+#### Updating batch-processing
+
+Navigate to your copy of the `helium-topography` repository.
+
+`cd /path/to/helium-topography`
+
+Stop the container and remove it.
+
+`make docker-clean-processing`
+
+Update the repository.
+
+`git pull`
+
+Build image.
+
+`make docker-build-processing`
+
+Start the updated Docker container.
+
+`make docker-start-processing`
+
+See logs.
+
+`docker logs batch-processing`
